@@ -19,3 +19,7 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:8000/content-service/share/notice
+Accept: application/json
+
+###
