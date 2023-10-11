@@ -8,6 +8,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import top.th.share.common.exception.BusinessException;
 import top.th.share.common.exception.BusinessExceptionEnum;
+import top.th.share.common.util.JwtUtil;
 import top.th.share.common.util.SnowUtil;
 import top.th.share.user.domain.dto.LoginDTO;
 import top.th.share.user.domain.entity.User;
@@ -49,9 +50,10 @@ public class UserService {
         UserLoginResp userLoginResp=UserLoginResp.builder()
                 .user(userDB)
                 .build();
-        String key="sceps002";
-        Map<String,Object> map = BeanUtil.beanToMap(userLoginResp);
-        String token= JWTUtil.createToken(map,key.getBytes());
+        //String key="sceps002";
+        //Map<String,Object> map = BeanUtil.beanToMap(userLoginResp);
+        //String token= JWTUtil.createToken(map,key.getBytes());
+        String token= JwtUtil.createToken(userLoginResp.getUser().getId(), userLoginResp.getUser().getPhone());
         userLoginResp.setToken(token);
         return userLoginResp;
     }
