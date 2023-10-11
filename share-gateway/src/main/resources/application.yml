@@ -12,3 +12,4 @@ spring:
           uri: http://127.0.0.1:8002
           predicates:
             - Path=/content-service/**
+
