@@ -20,6 +20,6 @@ public class GatewayApplication {
         SpringApplication app = new SpringApplication(GatewayApplication.class);
         Environment env = app.run(args).getEnvironment();
         log.info("网关启动成功！！");
-        log.info("网关地址：http://127.0.0.1:{}", env.getProperty("server.port"));
+        log.info("网关地址：http:127.0.0.1:{}", env.getProperty("server.port"));
     }
 }
