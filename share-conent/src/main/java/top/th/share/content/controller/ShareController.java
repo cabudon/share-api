@@ -19,6 +19,7 @@ import java.util.List;
 @RequestMapping(value = "/share")
 public class ShareController {
 
+
     @Resource
     private NoticeService noticeService;
 

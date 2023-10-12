@@ -10,4 +10,5 @@ import top.th.share.content.domain.entity.Notice;
 
 public interface NoticeMapper extends BaseMapper<Notice> {
 
+
 }

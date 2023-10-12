@@ -24,4 +24,5 @@ public class Notice {
 
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH")
     private Data createTime;
+
 }

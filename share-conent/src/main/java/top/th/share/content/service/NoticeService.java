@@ -24,5 +24,6 @@ public class NoticeService {
         wrapper.orderByDesc(Notice::getId);
         List<Notice> notices = noticeMapper.selectList(wrapper);
         return notices.get(0);
+
     }
 }
