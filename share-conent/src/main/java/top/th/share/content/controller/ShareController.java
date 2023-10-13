@@ -8,6 +8,7 @@ import top.th.share.common.resp.CommonResp;
 import top.th.share.common.util.JwtUtil;
 import top.th.share.content.domain.entity.Notice;
 import top.th.share.content.domain.entity.Share;
+import top.th.share.content.domain.resp.ShareResp;
 import top.th.share.content.service.NoticeService;
 import top.th.share.content.service.ShareService;
 
@@ -67,5 +68,11 @@ public class ShareController {
         return userId;
     }
 
-
+    @GetMapping("/{id}")
+    public CommonResp<ShareResp> getShareById(@PathVariable Long id){
+        ShareResp shareResp=shareService.findById(id);
+        CommonResp<ShareResp> commonResp=new CommonResp<>();
+        commonResp.setData(shareResp);
+        return commonResp;
+    }
 }

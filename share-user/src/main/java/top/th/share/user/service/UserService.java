@@ -80,4 +80,8 @@ public class UserService {
         userMapper.insert(savedUser);
         return savedUser.getId();
     }
+
+    public User findById(Long userId){
+        return userMapper.selectById(userId);
+    }
 }
