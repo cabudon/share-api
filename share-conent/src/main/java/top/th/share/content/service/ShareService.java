@@ -2,6 +2,7 @@ package top.th.share.content.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import top.th.share.content.domain.entity.MidUserShare;
@@ -24,8 +25,8 @@ public class ShareService {
 
     @Resource
     private ShareMapper shareMapper;
-    //Integer pageNo, Integer pageSize,
-    public List<Share> getList(String title,  Long userId) {
+
+    public List<Share> getList(String title, Integer pageNo, Integer pageSize, Long userId) {
         // 构造查询条件
         LambdaQueryWrapper<Share> wrapper = new LambdaQueryWrapper<>();
         // 按照 id 降序查询所有数据
@@ -38,9 +39,9 @@ public class ShareService {
         wrapper.eq(Share::getAuditStatus, "PASS").eq(Share::getShowFlag, true);
 
         //内置的分页对象
-        //Page<Share> page = Page.of(pageNo, pageSize);
-        //// 执行按条件查询
-        List<Share> shares = shareMapper.selectList(wrapper);
+        Page<Share> page = Page.of(pageNo, pageSize);
+        // 执行按条件查询
+        List<Share> shares = shareMapper.selectList(page,wrapper);
 
         // 处理后的 Share 数据列表
         List<Share> sharesDeal;
