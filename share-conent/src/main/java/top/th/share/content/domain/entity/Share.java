@@ -38,7 +38,11 @@ public class Share {
 
     private Boolean showFlag;
 
+<<<<<<< HEAD
     private String auditStatus;
+=======
+    private String audiStatus;
+>>>>>>> bae15a51377faa68405c6417441f2547de0d04a7
 
     private String reason;
 

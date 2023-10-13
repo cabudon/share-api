@@ -8,7 +8,10 @@ import top.th.share.common.resp.CommonResp;
 import top.th.share.common.util.JwtUtil;
 import top.th.share.content.domain.entity.Notice;
 import top.th.share.content.domain.entity.Share;
+<<<<<<< HEAD
 import top.th.share.content.domain.resp.ShareResp;
+=======
+>>>>>>> bae15a51377faa68405c6417441f2547de0d04a7
 import top.th.share.content.service.NoticeService;
 import top.th.share.content.service.ShareService;
 
@@ -30,9 +33,12 @@ public class ShareController {
     @Resource
     private ShareService shareService;
 
+<<<<<<< HEAD
     //定义每页最多的数据量，以防前端定义传递超大参数，造成页面数据量过大
     private final int MAX = 100;
 
+=======
+>>>>>>> bae15a51377faa68405c6417441f2547de0d04a7
     @GetMapping(value = "/notice")
     public CommonResp<Notice> getLatestNotice() {
         CommonResp<Notice> commonResp = new CommonResp<>();
@@ -41,6 +47,7 @@ public class ShareController {
     }
 
     @GetMapping("/list")
+<<<<<<< HEAD
     public CommonResp<List<Share>> getShareList(@RequestParam(required = false) String title,
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageNo,
                                                 @RequestParam(required = false, defaultValue = "3") Integer pageSize,
@@ -51,10 +58,18 @@ public class ShareController {
         Long userId = getUserIdFromToken(token);
         CommonResp<List<Share>> commonResp = new CommonResp<>();
         commonResp.setData(shareService.getList(title, pageNo, pageSize, userId));
+=======
+    public CommonResp<List<Share>> getShareList(@RequestParam(required = false) String title) {
+        CommonResp<List<Share>> commonResp = new CommonResp<>();
+        Long userId = 2L;
+        //commonResp.setData(shareService.getList(title,userId));
+        commonResp.setData(shareService.getList(title,userId));
+>>>>>>> bae15a51377faa68405c6417441f2547de0d04a7
         return commonResp;
 
     }
 
+<<<<<<< HEAD
     private Long getUserIdFromToken(String token) {
         log.info(">>>>>>>>>> token" + token);
         long userId = 0;
@@ -75,4 +90,7 @@ public class ShareController {
         commonResp.setData(shareResp);
         return commonResp;
     }
+=======
+
+>>>>>>> bae15a51377faa68405c6417441f2547de0d04a7
 }

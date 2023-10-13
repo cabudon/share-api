@@ -2,6 +2,7 @@ package top.th.share.content.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+<<<<<<< HEAD
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,12 @@ import top.th.share.content.domain.entity.Share;
 import top.th.share.content.domain.resp.ShareResp;
 import top.th.share.content.feign.User;
 import top.th.share.content.feign.UserService;
+=======
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Service;
+import top.th.share.content.domain.entity.MidUserShare;
+import top.th.share.content.domain.entity.Share;
+>>>>>>> bae15a51377faa68405c6417441f2547de0d04a7
 import top.th.share.content.mapper.MidUserShareMapper;
 import top.th.share.content.mapper.ShareMapper;
 
@@ -30,9 +37,12 @@ public class ShareService {
     @Resource
     private ShareMapper shareMapper;
 
+<<<<<<< HEAD
     @Resource
     private UserService userService;
 
+=======
+>>>>>>> bae15a51377faa68405c6417441f2547de0d04a7
     public List<Share> getList(String title, Integer pageNo, Integer pageSize, Long userId) {
         // 构造查询条件
         LambdaQueryWrapper<Share> wrapper = new LambdaQueryWrapper<>();
@@ -43,12 +53,21 @@ public class ShareService {
             wrapper.like(Share::getTitle, title);
         }
         // 过滤出所有已经通过审核的数据并需要显示的数据
+<<<<<<< HEAD
         wrapper.eq(Share::getAuditStatus, "PASS").eq(Share::getShowFlag, true);
 
         //内置的分页对象
         Page<Share> page = Page.of(pageNo, pageSize);
         // 执行按条件查询
         List<Share> shares = shareMapper.selectList(page,wrapper);
+=======
+        wrapper.eq(Share::getAudiStatus, "PASS").eq(Share::getShowFlag, true);
+
+        //内置的分页对象
+        //Page<Share> page = Page.of(pageNo, pageSize);
+        //// 执行按条件查询
+        List<Share> shares = shareMapper.selectList(wrapper);
+>>>>>>> bae15a51377faa68405c6417441f2547de0d04a7
 
         // 处理后的 Share 数据列表
         List<Share> sharesDeal;
@@ -70,6 +89,7 @@ public class ShareService {
         }
         return sharesDeal;
     }
+<<<<<<< HEAD
 
     public ShareResp findById(Long shareId){
         Share share=shareMapper.selectById(shareId);
@@ -77,4 +97,6 @@ public class ShareService {
         return ShareResp.builder().share(share).nickname(commonResp.getData().getNickname())
                 .avatarUrl(commonResp.getData().getAvatarUrl()).build();
     }
+=======
+>>>>>>> bae15a51377faa68405c6417441f2547de0d04a7
 }
